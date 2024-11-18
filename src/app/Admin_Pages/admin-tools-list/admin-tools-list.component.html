@@ -1,1 +1,40 @@
-<p>admin-tools-list works!</p>
+<div class="user-page-title">
+  <h2>Outils</h2>
+</div>
+<button mdbRipple (click)="add()" style="width: 20%;margin-left: 20px" class="btn btn-primary btn-block mb-4">Ajouter un outil</button>
+<div class="user-list-layout">
+  <div class="user-list-container">
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Code à barre</th>
+        <th scope="col">Image</th>
+        <th scope="col">Vidéo</th>
+        <th scope="col">Catégorie</th>
+        <th scope="col">Manipulation</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th scope="row">test</th>
+        <td>Perceuse</td>
+        <td>
+          <img src="assets/perceuse.jpg" alt="" srcset="" style="width: 100px;height: 100px">
+        </td>
+        <td>
+          <iframe width="250" height="200" src="https://www.youtube.com/embed/wdbiIUhXLdc?si=Ium8aWYy47PTKJiw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </td>
+        <td>Jardinage</td>
+        <td>
+          <div class="flex-content">
+            <img src="assets/modify.png" alt="" srcset="" style="height: 50px;width: 50px;cursor: pointer">
+            <img src="assets/delete.jfif" alt="" srcset="" style="width: 50px;height: 50px;cursor: pointer">
+          </div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

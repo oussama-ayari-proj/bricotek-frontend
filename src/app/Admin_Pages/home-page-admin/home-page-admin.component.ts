@@ -4,6 +4,7 @@ import {MatButton, MatButtonModule} from "@angular/material/button";
 import {AdminUserListComponent} from "../admin-user-list/admin-user-list.component";
 import {AdminToolsListComponent} from "../admin-tools-list/admin-tools-list.component";
 import {NgIf} from "@angular/common";
+import {AdminPretsComponent} from "../admin-prets-list/admin-prets/admin-prets.component";
 
 @Component({
   selector: 'app-home-page-admin',
@@ -12,13 +13,13 @@ import {NgIf} from "@angular/common";
     MatDrawerContainer,
     MatButton,
     MatDrawer,
-    MatSidenavModule, MatButtonModule, AdminUserListComponent, AdminToolsListComponent, NgIf
+    MatSidenavModule, MatButtonModule, AdminUserListComponent, AdminToolsListComponent, NgIf, AdminPretsComponent
   ],
   templateUrl: './home-page-admin.component.html',
   styleUrl: './home-page-admin.component.scss'
 })
 export class HomePageAdminComponent {
-  content=[false,false]
+  content=[true,false,false]
   toogleContent(index){
     let n=this.content.length
     for(let i=0;i<n;i++){

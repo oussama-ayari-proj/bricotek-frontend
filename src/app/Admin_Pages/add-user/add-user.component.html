@@ -1,0 +1,56 @@
+<div class="login-layout">
+  <div class="login-container">
+    <div class="logo-container">
+      <img src="./assets/logo-regie.png" alt="" srcset="">
+    </div>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <mdb-form-control class="mb-4">
+        <input mdbInput formControlName="numAdh" type="text" class="form-control" />
+        <label mdbLabel class="form-label" for="form2Example1">Numéro Adherent</label>
+      </mdb-form-control>
+      <mdb-form-control class="mb-4">
+        <input mdbInput formControlName="numAdh" type="text" class="form-control" />
+        <label mdbLabel class="form-label" for="form2Example1">Nom</label>
+      </mdb-form-control>
+      <mdb-form-control class="mb-4">
+        <input mdbInput formControlName="numAdh" type="text" class="form-control" />
+        <label mdbLabel class="form-label" for="form2Example1">Prénom</label>
+      </mdb-form-control>
+
+      <!-- Email input -->
+      <mdb-form-control class="mb-4">
+        <input mdbInput formControlName="email" type="email" id="form2Example1" class="form-control" />
+        <label mdbLabel class="form-label" for="form2Example1">Email</label>
+      </mdb-form-control>
+
+      <mdb-form-control class="mb-4">
+        <input mdbInput formControlName="numTel" type="text" class="form-control" />
+        <label mdbLabel class="form-label" for="form2Example1">Numéro Téléphone</label>
+      </mdb-form-control>
+      <mdb-form-control class="mb-4">
+        <input mdbInput formControlName="numTel" type="text" class="form-control" />
+        <label mdbLabel class="form-label" for="form2Example1">Addresse</label>
+      </mdb-form-control>
+      <mdb-form-control class="mb-4">
+        <input mdbInput formControlName="numTel" type="date" class="form-control" />
+        <label mdbLabel class="form-label" for="form2Example1">Date de naissance</label>
+      </mdb-form-control>
+      <!-- Password input -->
+      <mdb-form-control class="mb-4">
+        <input mdbInput formControlName="password" type="password" id="form2Example2" class="form-control" />
+        <label mdbLabel class="form-label" for="form2Example2">Mot de passe</label>
+      </mdb-form-control>
+      <mdb-form-control class="mb-4">
+        <input mdbInput formControlName="password" type="password" class="form-control" />
+        <label mdbLabel class="form-label" for="form2Example2">Confirmer Mot de passe</label>
+      </mdb-form-control>
+      <!-- 2 column grid layout for inline styling -->
+
+      <!-- Submit button -->
+      <button mdbRipple type="submit" class="btn btn-primary btn-block mb-4">Ajouter</button>
+      <button mdbRipple (click)="back()" class="btn btn-danger btn-block mb-4">Retourner</button>
+    </form>
+  </div>
+</div>
+
+

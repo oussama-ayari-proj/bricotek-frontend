@@ -17,6 +17,11 @@ export class UserService {
       body: body
     })
   }
+  addUser(body){
+    return this.api.register$Response({
+      body:body
+    })
+  }
   register(user){
     return this.api.register$Response(user);
   }

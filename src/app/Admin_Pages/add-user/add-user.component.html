@@ -3,47 +3,54 @@
     <div class="logo-container">
       <img src="./assets/logo-regie.png" alt="" srcset="">
     </div>
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <mdb-form-control class="mb-4">
-        <input mdbInput formControlName="numAdh" type="text" class="form-control" />
-        <label mdbLabel class="form-label" for="form2Example1">Numéro Adherent</label>
-      </mdb-form-control>
-      <mdb-form-control class="mb-4">
-        <input mdbInput formControlName="numAdh" type="text" class="form-control" />
-        <label mdbLabel class="form-label" for="form2Example1">Nom</label>
-      </mdb-form-control>
-      <mdb-form-control class="mb-4">
-        <input mdbInput formControlName="numAdh" type="text" class="form-control" />
-        <label mdbLabel class="form-label" for="form2Example1">Prénom</label>
-      </mdb-form-control>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" style="display: flex;flex-direction: column">
+      <mat-form-field class="example-full-width">
+        <mat-label>Nom</mat-label>
+        <input matInput placeholder="" value="" formControlName="nom">
+      </mat-form-field>
 
+      <mat-form-field class="example-full-width">
+        <mat-label>Prénom</mat-label>
+        <input matInput placeholder="" value="" formControlName="prenom">
+      </mat-form-field>
       <!-- Email input -->
-      <mdb-form-control class="mb-4">
-        <input mdbInput formControlName="email" type="email" id="form2Example1" class="form-control" />
-        <label mdbLabel class="form-label" for="form2Example1">Email</label>
-      </mdb-form-control>
 
-      <mdb-form-control class="mb-4">
-        <input mdbInput formControlName="numTel" type="text" class="form-control" />
-        <label mdbLabel class="form-label" for="form2Example1">Numéro Téléphone</label>
-      </mdb-form-control>
-      <mdb-form-control class="mb-4">
-        <input mdbInput formControlName="numTel" type="text" class="form-control" />
-        <label mdbLabel class="form-label" for="form2Example1">Addresse</label>
-      </mdb-form-control>
-      <mdb-form-control class="mb-4">
-        <input mdbInput formControlName="numTel" type="date" class="form-control" />
-        <label mdbLabel class="form-label" for="form2Example1">Date de naissance</label>
-      </mdb-form-control>
-      <!-- Password input -->
-      <mdb-form-control class="mb-4">
-        <input mdbInput formControlName="password" type="password" id="form2Example2" class="form-control" />
-        <label mdbLabel class="form-label" for="form2Example2">Mot de passe</label>
-      </mdb-form-control>
-      <mdb-form-control class="mb-4">
-        <input mdbInput formControlName="password" type="password" class="form-control" />
-        <label mdbLabel class="form-label" for="form2Example2">Confirmer Mot de passe</label>
-      </mdb-form-control>
+      <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput formControlName="email"
+                 placeholder="Ex. pat@exemple.com">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Adresse</mat-label>
+        <input matInput placeholder="" value="" formControlName="adresse">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Numéro de telephone</mat-label>
+        <input matInput placeholder="" value="" formControlName="numTel">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Choose a date</mat-label>
+        <input formControlName="dateOfBirth" matInput [matDatepicker]="picker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker">
+          <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+        </mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Mot de passe</mat-label>
+        <input matInput placeholder="" value="" formControlName="password">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Role</mat-label>
+        <mat-select formControlName="role">
+          @for (role of roles; track role) {
+            <mat-option [value]="role.value">{{role.viewValue}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
       <!-- 2 column grid layout for inline styling -->
 
       <!-- Submit button -->

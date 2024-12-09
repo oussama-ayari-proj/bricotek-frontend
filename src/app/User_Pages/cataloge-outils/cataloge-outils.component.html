@@ -1,14 +1,43 @@
 <div class="catalogue-page-layout">
   <div class="search-bar-layout">
-
       <label class="search-label">Catalogue</label>
       <input class="search-input" placeholder="Recherche">
-
     <button type="button" class="btn btn-primary" style="height: 50px">
       <i class="fas fa-search"></i>
     </button>
   </div>
+  <div *ngIf="!isconnected" class="connected-alert-message-container">
+    <div class="alert alert-danger" role="alert">
+      Pour réserver du matériel en ligne, il est nécessaire de s’identifier
+    </div>
+    <button type="button" class="btn btn-danger">Se connecter</button>
+  </div>
   <div class="catalogue-content-layout">
-
+    <div class="catalogue-content-container">
+      <div class="outils-container">
+        <img src="assets/perceuse.jpg" alt="" srcset="" class="outils-img">
+        <div class="outils-content-container">
+          <div class="outils-content-text">
+            <div class="border-card">
+              <div class="outils-nom">
+                Visseuce Perceuse MAKITA
+              </div>
+              <div class="outils-categorie">
+                Categorie 1
+              </div>
+              <div class="outils-etat-neuve">
+                Neuve
+              </div>
+            </div>
+            <div class="reservation-button-container">
+              <button type="button" class="btn btn-primary reservation-button">Réserver</button>
+            </div>
+          </div>
+          <div class="outils-content-video">
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/wdbiIUhXLdc?si=EtISLZlLMxd7grG6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

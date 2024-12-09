@@ -2,7 +2,7 @@
   width: 100vw;
   height: 100vh;
   display: grid;
-  grid-template-rows: 20% 80%;
+  grid-template-rows: 20% 10% 70%;
   row-gap: 10%;
 }
 .search-bar-layout{
@@ -28,4 +28,85 @@
   background-color: #ffde59;
   color: #566068;
   border-radius: 10px 0 0 10px;
+}
+.connected-alert-message-container{
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.catalogue-content-layout{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.catalogue-content-container{
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.outils-container{
+  width: 100%;
+  height: 320px;
+  display: flex;
+}
+.outils-img{
+  width: 35%;
+  height: 100%;
+}
+.outils-content-container{
+  width: 65%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+.outils-content-text{
+  width: 100%;
+  height: 40%;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+}
+.border-card{
+  border: 1px solid black;
+  width: 78%;
+  height: 100%;
+  padding: 5px;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  row-gap: 5px;
+}
+.reservation-button-container{
+  width: 18%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.outils-content-video{
+  width: 100%;
+  height: 60%;
+}
+
+.outils-categorie,.outils-etat-neuve{
+  width: 100px;
+  height: 30px;
+  background-color: orangered;
+  border-radius: 5px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.outils-etat-neuve{
+  background-color: green;
+
 }

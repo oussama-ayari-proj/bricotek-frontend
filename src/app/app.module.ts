@@ -24,6 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import {provideNativeDateAdapter} from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -48,10 +49,11 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     MdbTooltipModule,
     MdbValidationModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    provideNativeDateAdapter(),
   ],
   bootstrap: [AppComponent]
 })

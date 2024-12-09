@@ -19,7 +19,7 @@ import {Router} from "@angular/router";
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent {
+export class LoginComponent{
   form: FormGroup = new FormGroup({
     email: new FormControl(''),
     password: new FormControl('')

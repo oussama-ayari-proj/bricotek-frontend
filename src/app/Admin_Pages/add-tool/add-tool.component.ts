@@ -4,6 +4,10 @@ import {MdbFormsModule} from "mdb-angular-ui-kit/forms";
 import {MdbRippleModule} from "mdb-angular-ui-kit/ripple";
 import {FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {Location} from "@angular/common";
+import {MatFormField, MatLabel} from "@angular/material/form-field";
+import {MatOption, MatSelect} from "@angular/material/select";
+import {MatInput} from "@angular/material/input";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-tool',
@@ -12,20 +16,26 @@ import {Location} from "@angular/common";
     MdbCheckboxModule,
     MdbFormsModule,
     MdbRippleModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatFormField,
+    MatSelect,
+    MatOption,
+    MatLabel,
+    MatInput
   ],
   templateUrl: './add-tool.component.html',
   styleUrl: '../../login/login.component.scss'
 })
 export class AddToolComponent {
-  form: FormGroup;
-constructor(private location:Location) {
+constructor(private router:Router) {
 }
-  onSubmit() {
-
-  }
 
   back() {
-    this.location.back()
+    this.router.navigateByUrl('/admin-home');
   }
+  foods= [
+    {value: 'steak-0', viewValue: 'Cat1'},
+    {value: 'pizza-1', viewValue: 'Cat1'},
+    {value: 'tacos-2', viewValue: 'Cat1'},
+  ];
 }

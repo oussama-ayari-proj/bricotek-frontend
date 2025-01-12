@@ -5,12 +5,12 @@
         <ng-template matStepLabel>Infos générales sur l'outil</ng-template>
         <mat-form-field>
           <mat-label>Nom</mat-label>
-          <input matInput placeholder="Nom de l'outil" formControlName="nom" required>
+          <input matInput placeholder="Nom de l'outil" formControlName="nom" [value]="outil['nom']" required>
         </mat-form-field>
         <br>
         <mat-form-field>
           <mat-label>Catégorie / Filtre</mat-label>
-          <mat-select [formControl]="firstFormGroup.controls.categorieOutils">
+          <mat-select [formControl]="firstFormGroup.controls.categorieOutils" [value]="outil['categorieOutils']">
             @for (categorie of categories; track categorie) {
               <mat-option [value]="categorie.value">{{categorie.viewValue}}</mat-option>
             }
@@ -19,12 +19,12 @@
         <br>
         <mat-form-field>
           <mat-label>Image de l'outil</mat-label>
-          <input matInput placeholder="Lien image de l'outil" formControlName="imgPath">
+          <input matInput placeholder="Lien image de l'outil" formControlName="imgPath" [value]="outil['imgPath']">
         </mat-form-field>
         <br>
         <mat-form-field>
           <mat-label>Vidéo de l'outil</mat-label>
-          <input matInput placeholder="Lien YouTube,.." formControlName="videoPath">
+          <input matInput placeholder="Lien YouTube,.." formControlName="videoPath" [value]="outil['videoPath']">
         </mat-form-field>
         <br>
         <mat-checkbox [formControl]="firstFormGroup.controls.etat">Disponible ou pas ?</mat-checkbox>

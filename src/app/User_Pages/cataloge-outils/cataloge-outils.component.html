@@ -14,23 +14,26 @@
   </div>
   <div class="catalogue-content-layout">
     <div class="catalogue-content-container">
-      <div class="outils-container">
-        <img src="assets/perceuse.jpg" alt="" srcset="" class="outils-img">
+      <div *ngFor="let outil of list" class="outils-container">
+        <img [src]="toolImages[outil.image]" class="outils-img">
         <div class="outils-content-container">
           <div class="outils-content-text">
             <div class="border-card">
               <div class="outils-nom">
-                Visseuce Perceuse MAKITA
+                {{outil.nom}}
               </div>
               <div class="outils-categorie">
-                Categorie 1
+                {{ outil.categorieOutils }}
               </div>
-              <div class="outils-etat-neuve">
-                Neuve
+              <div *ngIf="!outil.etat" class="outils-etat-reserve">
+                Réservé
+              </div>
+              <div *ngIf="outil.etat" class="outils-etat-dispo">
+                Disponible
               </div>
             </div>
             <div class="reservation-button-container">
-              <button type="button" class="btn btn-primary reservation-button">Réserver</button>
+              <button type="button" (click)="test()" class="btn btn-primary reservation-button">Réserver</button>
             </div>
           </div>
           <div class="outils-content-video">

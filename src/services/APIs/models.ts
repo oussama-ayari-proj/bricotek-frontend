@@ -4,4 +4,9 @@
 
 export { AuthenticationRequest } from './models/authentication-request';
 export { AuthenticationResponse } from './models/authentication-response';
+export { GrantedAuthority } from './models/granted-authority';
+export { ImageData } from './models/image-data';
+export { Outil } from './models/outil';
+export { Pret } from './models/pret';
 export { RegistrationRequest } from './models/registration-request';
+export { User } from './models/user';

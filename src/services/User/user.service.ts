@@ -22,10 +22,12 @@ export class UserService {
       body:body
     })
   }
-  register(user){
-    return this.api.register$Response(user);
-  }
   getUsers(){
     return this.usersApi.getUsers();
+  }
+  deleteUser(id){
+    return this.usersApi.deleteUser({
+      id:id
+    });
   }
 }

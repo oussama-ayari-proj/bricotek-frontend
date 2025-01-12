@@ -23,7 +23,10 @@
         <th scope="row">{{ u.userId }}</th>
         <td>{{ u.nom }}</td>
         <td>{{ u.prenom }}</td>
-        <td>{{ u.cotisation }}</td>
+        <td>
+          <div class="positive" *ngIf="u.cotisation">Payée</div>
+          <div class="negative" *ngIf="!u.cotisation">Non Payée</div>
+        </td>
         <td>{{ u.email }}</td>
         <td>{{ u.numTel }}</td>
         <td>{{ u.addresse }}</td>
@@ -31,7 +34,7 @@
         <td>
           <div class="flex-content">
             <img src="assets/modify.png" alt="" srcset="" style="height: 40px;width: 40px;cursor: pointer">
-            <img src="assets/delete.jfif" alt="" srcset="" style="width: 40px;height: 40px;cursor: pointer">
+            <img src="assets/delete.jfif" (click)="deleteUser(u.userId)" alt="" srcset="" style="width: 40px;height: 40px;cursor: pointer">
           </div>
         </td>
       </tr>

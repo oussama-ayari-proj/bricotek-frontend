@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../../services/User/user.service";
-import {NgForOf} from "@angular/common";
+import {NgForOf, NgIf} from "@angular/common";
 import {MdbRippleModule} from "mdb-angular-ui-kit/ripple";
 import {Router} from "@angular/router";
 
@@ -9,13 +9,14 @@ import {Router} from "@angular/router";
   standalone: true,
   imports: [
     NgForOf,
-    MdbRippleModule
+    MdbRippleModule,
+    NgIf
   ],
   templateUrl: './admin-user-list.component.html',
   styleUrl: './admin-user-list.component.scss'
 })
 export class AdminUserListComponent implements OnInit{
-  list:{}
+  list=[]
   constructor(
     private userService:UserService,
     private router:Router
@@ -27,8 +28,17 @@ export class AdminUserListComponent implements OnInit{
       .subscribe(
       {
         next:(res)=>{
-          console.log(res)
-          this.list=res;
+          this.list=res as [];
+          console.log(this.list)
+          this.list=this.list.map(item => {
+            item.dateOfBirth=item.dateOfBirth.slice(0, 10)
+            const dateParts = item.dateOfBirth.split("-");
+            const formattedDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
+            return {
+            ...item,
+            dateOfBirth: formattedDate
+            }
+          });
         },
         error:(err)=>{
           console.log(err)
@@ -37,11 +47,23 @@ export class AdminUserListComponent implements OnInit{
     )
   }
 
-  test(){
-    console.log(this.list)
-  }
 
   add() {
     this.router.navigateByUrl('admin-add-user')
+  }
+
+  deleteUser(userId: any) {
+    const message =confirm("Êtes-vous sûr de vouloir supprimer cet utilisateur ?");
+    if(message){
+      const index=this.list.findIndex((user)=> user.userId==userId)
+      if(index!=-1){
+        this.userService.deleteUser(userId).subscribe((res)=>{
+          console.log(res);
+        })
+        this.list.splice(index,1);
+      }
+
+    }
+
   }
 }

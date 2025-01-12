@@ -1,16 +1,12 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {MdbCheckboxModule} from "mdb-angular-ui-kit/checkbox";
 import {MdbFormsModule} from "mdb-angular-ui-kit/forms";
 import {MdbRippleModule} from "mdb-angular-ui-kit/ripple";
-import {FormGroup, ReactiveFormsModule} from "@angular/forms";
-import {Location} from "@angular/common";
-import {MatFormField, MatLabel} from "@angular/material/form-field";
+import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
+import {MatFormField, MatFormFieldModule, MatLabel} from "@angular/material/form-field";
 import {MatOption, MatSelect} from "@angular/material/select";
-import {MatInput} from "@angular/material/input";
+import {MatInput, MatInputModule} from "@angular/material/input";
 import {ActivatedRoute, Router} from "@angular/router";
-import {FormBuilder, Validators, FormsModule} from '@angular/forms';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCheckbox} from "@angular/material/checkbox";
@@ -19,7 +15,7 @@ import {MatIcon} from "@angular/material/icon";
 import {OutilServiceService} from "../../../services/Outil/outil-service.service";
 
 @Component({
-  selector: 'app-add-tool',
+  selector: 'app-mod-tool',
   standalone: true,
   imports: [
     MdbCheckboxModule,
@@ -40,15 +36,17 @@ import {OutilServiceService} from "../../../services/Outil/outil-service.service
     MatCheckbox,
     MatIcon
   ],
-  templateUrl: './add-tool.component.html',
-  styleUrl: './add-tool.component.scss'
+  templateUrl: './mod-tool.component.html',
+  styleUrl: './mod-tool.component.scss'
 })
-export class AddToolComponent {
+export class ModToolComponent implements OnInit{
 constructor(
   private router:Router,
-  private outilsService:OutilServiceService
+  private outilsService:OutilServiceService,
+  private activatedRoute:ActivatedRoute
 ) {
 }
+
 
   back() {
     this.router.navigateByUrl('/admin-home');
@@ -84,19 +82,45 @@ constructor(
   }
 
   sendOutils() {
-    this.outilsService.addOutils({
+    this.outilsService.modifyOutilById(this.id,{
       imgPath: this.firstFormGroup.value.imgPath,
       videoPath: this.firstFormGroup.value.videoPath,
       etat: this.firstFormGroup.value.etat,
       nom: this.firstFormGroup.value.nom,
       categorieOutils: this.firstFormGroup.value.categorieOutils
     }).subscribe((res)=>{
-      console.log(res);
-      let outilId=(res as number);
-      if(this.fileName)
-        this.outilsService.addImageOutils(outilId,this.formData.get("photo")).subscribe((res)=>{
+      if(this.formData.get("photo")!=null)
+        this.outilsService.addImageOutils(this.id,this.formData.get("photo")).subscribe((res)=>{
           console.log(res);
         });
     })
+  }
+  id;
+  ngOnInit() {
+    this.id = this.activatedRoute.snapshot.paramMap.get('toolId');
+    this.loadData(this.id);
+  }
+  outil={};
+  toolImages: { [key: string]: any } = {};
+  loadData(id){
+    this.outilsService.getOutilById(id).subscribe((tool)=>{
+        this.outil=tool;
+        console.log(tool)
+        console.log(this.outil)
+        if(this.outil['image']!=null){
+          this.outilsService.getImageOutilById(this.outil['image']).subscribe((img)=>{
+           console.log(img);
+          })
+        }
+
+        this.firstFormGroup.patchValue({
+          etat: this.outil['etat'],
+          nom: this.outil['nom'],
+          categorieOutils: this.outil['categorieOutils'],
+          videoPath: this.outil['videoPath'],
+          imgPath: this.outil['imgPath']
+        });
+      }
+    );
   }
 }

@@ -9,8 +9,7 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Nom</th>
-        <th scope="col">Code à barre</th>
-        <th scope="col">Description</th>
+        <th scope="col">Etat</th>
         <th scope="col">Image</th>
         <th scope="col">Vidéo</th>
         <th scope="col">Filtre/Catégorie</th>
@@ -18,22 +17,22 @@
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Perceuse</td>
-        <td>123456</td>
-        <td>Description ici</td>
+      <tr *ngFor="let o of outils">
+        <th scope="row">{{o.outilId}}</th>
+        <td>{{o.nom}}</td>
+        <td>{{o.etat}}</td>
         <td>
-          <img src="assets/perceuse.jpg" alt="" srcset="" style="width: 100px;height: 100px">
+          <img *ngIf="toolImages[o.image]!=null" [src]="toolImages[o.image]" class="outils-img">
+          <p *ngIf="toolImages[o.image]==null">Pas d'image</p>
         </td>
         <td>
           <iframe width="250" height="200" src="https://www.youtube.com/embed/wdbiIUhXLdc?si=Ium8aWYy47PTKJiw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </td>
-        <td>Jardinage</td>
+        <td>{{o.categorieOutils}}</td>
         <td>
           <div class="flex-content">
-            <img src="assets/modify.png" alt="" srcset="" style="height: 50px;width: 50px;cursor: pointer">
-            <img src="assets/delete.jfif" alt="" srcset="" style="width: 50px;height: 50px;cursor: pointer">
+            <img src="assets/modify.png" (click)="modify(o.outilId)" alt="" srcset="" style="height: 50px;width: 50px;cursor: pointer">
+            <img src="assets/delete.jfif" (click)="delete(o.outilId)" alt="" srcset="" style="width: 50px;height: 50px;cursor: pointer">
           </div>
         </td>
       </tr>

@@ -4,4 +4,5 @@
 
 export { UsersService } from './services/users.service';
 export { OutilsService } from './services/outils.service';
+export { PretsService } from './services/prets.service';
 export { AuthenticationService } from './services/authentication.service';

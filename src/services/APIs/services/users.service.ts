@@ -13,6 +13,8 @@ import { StrictHttpResponse } from '../strict-http-response';
 
 import { deleteUser } from '../fn/users/delete-user';
 import { DeleteUser$Params } from '../fn/users/delete-user';
+import { getUserById } from '../fn/users/get-user-by-id';
+import { GetUserById$Params } from '../fn/users/get-user-by-id';
 import { getUsers } from '../fn/users/get-users';
 import { GetUsers$Params } from '../fn/users/get-users';
 import { modifyUser } from '../fn/users/modify-user';
@@ -47,6 +49,35 @@ export class UsersService extends BaseService {
   modifyUser(params: ModifyUser$Params, context?: HttpContext): Observable<{
 }> {
     return this.modifyUser$Response(params, context).pipe(
+      map((r: StrictHttpResponse<{
+}>): {
+} => r.body)
+    );
+  }
+
+  /** Path part for operation `getUserById()` */
+  static readonly GetUserByIdPath = '/users/userById';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `getUserById()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getUserById$Response(params: GetUserById$Params, context?: HttpContext): Observable<StrictHttpResponse<{
+}>> {
+    return getUserById(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `getUserById$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  getUserById(params: GetUserById$Params, context?: HttpContext): Observable<{
+}> {
+    return this.getUserById$Response(params, context).pipe(
       map((r: StrictHttpResponse<{
 }>): {
 } => r.body)

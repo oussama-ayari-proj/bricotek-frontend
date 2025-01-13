@@ -15,11 +15,11 @@
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Tendeuse</td>
-        <th>Jean</th>
-        <td>11/12/2024</td>
+      <tr *ngFor="let p of list">
+        <th scope="row">{{p.pretId}}</th>
+        <td>{{ p.outil }}</td>
+        <th>{{ p.user }}</th>
+        <td>{{ p.dateRetour }}</td>
         <td><img src="assets/icon.png" alt="" srcset="" width="50px"></td>
       </tr>
       </tbody>

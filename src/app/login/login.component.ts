@@ -42,7 +42,7 @@ export class LoginComponent{
             this.router.navigateByUrl('admin-home')
           }else{
             console.log('Normal user')
-            this.router.navigateByUrl('user-home')
+            this.router.navigateByUrl('catalogue')
           }
         },
         error:(err)=>{

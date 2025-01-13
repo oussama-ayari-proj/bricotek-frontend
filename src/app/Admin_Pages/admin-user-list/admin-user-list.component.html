@@ -33,7 +33,7 @@
         <td>{{ u.dateOfBirth }}</td>
         <td>
           <div class="flex-content">
-            <img src="assets/modify.png" alt="" srcset="" style="height: 40px;width: 40px;cursor: pointer">
+            <img src="assets/modify.png" (click)="modify(u.userId)" alt="" srcset="" style="height: 40px;width: 40px;cursor: pointer">
             <img src="assets/delete.jfif" (click)="deleteUser(u.userId)" alt="" srcset="" style="width: 40px;height: 40px;cursor: pointer">
           </div>
         </td>

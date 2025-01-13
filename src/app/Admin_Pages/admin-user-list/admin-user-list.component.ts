@@ -66,4 +66,8 @@ export class AdminUserListComponent implements OnInit{
     }
 
   }
+
+  modify(userId: any) {
+    this.router.navigate(['admin-mod-user',userId]);
+  }
 }

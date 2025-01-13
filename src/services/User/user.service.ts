@@ -30,4 +30,16 @@ export class UserService {
       id:id
     });
   }
+
+  getUserById(id) {
+    return this.usersApi.getUserById({
+      id:id
+    });
+  }
+  modifyUser(id,user){
+    return this.usersApi.modifyUser({
+      id:id,
+      request:user
+    });
+  }
 }

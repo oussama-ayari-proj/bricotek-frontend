@@ -1,46 +1,68 @@
 <div class="catalogue-page-layout">
-  <div class="search-bar-layout">
+  <form class="filtre-container" [formGroup]="filterForm">
+    <mat-checkbox formControlName="CAT1">CAT1</mat-checkbox>
+    <mat-checkbox formControlName="CAT2">CAT2</mat-checkbox>
+
+    <button type="submit" (click)="appliquerFiltre()" class="btn btn-primary reservation-button">Appliquer filtre</button>
+  </form>
+  <div>
+    <form class="search-bar-layout" (ngSubmit)="chercher()">
       <label class="search-label">Catalogue</label>
-      <input class="search-input" placeholder="Recherche">
-    <button type="button" class="btn btn-primary" style="height: 50px">
-      <i class="fas fa-search"></i>
-    </button>
-  </div>
-  <div *ngIf="!isconnected" class="connected-alert-message-container">
-    <div class="alert alert-danger" role="alert">
-      Pour réserver du matériel en ligne, il est nécessaire de s’identifier
+      <mat-form-field>
+        <mat-label>Recherche</mat-label>
+        <input type="text"
+               placeholder="nom,categorie, etat.."
+               aria-label="Number"
+               matInput
+               [formControl]="form.controls.search"
+               [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          @for (option of filteredOptions | async; track option) {
+            <mat-option [value]="option['index']">{{option['index']+" - "+option['nom'] +" - "+option['categorieOutils']}}</mat-option>
+          }
+        </mat-autocomplete>
+      </mat-form-field>
+      <button type="submit" class="btn btn-primary" style="height: 50px">
+        <i class="fas fa-search"></i>
+      </button>
+    </form>
+    <div *ngIf="!isconnected" class="connected-alert-message-container">
+      <div class="alert alert-danger" role="alert">
+        Pour réserver du matériel en ligne, il est nécessaire de s’identifier
+      </div>
+      <button type="button" (click)="login()" class="btn btn-danger">Se connecter</button>
     </div>
-    <button type="button" class="btn btn-danger">Se connecter</button>
-  </div>
-  <div class="catalogue-content-layout">
-    <div class="catalogue-content-container">
-      <div *ngFor="let outil of list" class="outils-container">
-        <img [src]="toolImages[outil.image]" class="outils-img">
-        <div class="outils-content-container">
-          <div class="outils-content-text">
-            <div class="border-card">
-              <div class="outils-nom">
-                {{outil.nom}}
+    <div class="catalogue-content-layout">
+      <div class="catalogue-content-container">
+        <div *ngFor="let outil of res" class="outils-container">
+          <img [src]="toolImages[outil.image]" class="outils-img">
+          <div class="outils-content-container">
+            <div class="outils-content-text">
+              <div class="border-card">
+                <div class="outils-nom">
+                  {{outil.nom}}
+                </div>
+                <div class="outils-categorie">
+                  {{ outil.categorieOutils }}
+                </div>
+                <div *ngIf="!outil.etat" class="outils-etat-reserve">
+                  Réservé
+                </div>
+                <div *ngIf="outil.etat" class="outils-etat-dispo">
+                  Disponible
+                </div>
               </div>
-              <div class="outils-categorie">
-                {{ outil.categorieOutils }}
-              </div>
-              <div *ngIf="!outil.etat" class="outils-etat-reserve">
-                Réservé
-              </div>
-              <div *ngIf="outil.etat" class="outils-etat-dispo">
-                Disponible
+              <div class="reservation-button-container">
+                <button type="button" [disabled]="!isconnected" (click)="reserver(outil.outilId)" class="btn btn-primary reservation-button">Réserver</button>
               </div>
             </div>
-            <div class="reservation-button-container">
-              <button type="button" (click)="test()" class="btn btn-primary reservation-button">Réserver</button>
+            <div class="outils-content-video">
+              <iframe width="100%" height="100%" src="https://www.youtube.com/embed/wdbiIUhXLdc?si=EtISLZlLMxd7grG6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
             </div>
-          </div>
-          <div class="outils-content-video">
-            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/wdbiIUhXLdc?si=EtISLZlLMxd7grG6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
           </div>
         </div>
       </div>
     </div>
   </div>
+
 </div>

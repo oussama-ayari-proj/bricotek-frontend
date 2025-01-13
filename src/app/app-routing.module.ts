@@ -8,6 +8,7 @@ import {AddToolComponent} from "./Admin_Pages/add-tool/add-tool.component";
 import {AddPretComponent} from "./Admin_Pages/add-pret/add-pret.component";
 import {CatalogeOutilsComponent} from "./User_Pages/cataloge-outils/cataloge-outils.component";
 import {ModToolComponent} from "./Admin_Pages/mod-tool/mod-tool.component";
+import {ModUserComponent} from "./Admin_Pages/mod-user/mod-user.component";
 
 const routes: Routes = [
   { path: '' ,component: LoginComponent },
@@ -17,7 +18,9 @@ const routes: Routes = [
   {path: 'admin-add-tool'  ,component: AddToolComponent},
   {path: 'admin-add-pret'  ,component: AddPretComponent},
   {path: 'catalogue'  ,component: CatalogeOutilsComponent},
-  {path: 'admin-mod-tool/:toolId',component:ModToolComponent}
+  {path: 'admin-mod-tool/:toolId',component:ModToolComponent},
+  {path: 'admin-mod-user/:userId',component:ModUserComponent}
+
 ];
 
 @NgModule({

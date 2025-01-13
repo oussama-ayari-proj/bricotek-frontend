@@ -8,6 +8,7 @@ import { ApiConfiguration, ApiConfigurationParams } from './api-configuration';
 
 import { UsersService } from './services/users.service';
 import { OutilsService } from './services/outils.service';
+import { PretsService } from './services/prets.service';
 import { AuthenticationService } from './services/authentication.service';
 
 /**
@@ -20,6 +21,7 @@ import { AuthenticationService } from './services/authentication.service';
   providers: [
     UsersService,
     OutilsService,
+    PretsService,
     AuthenticationService,
     ApiConfiguration
   ],

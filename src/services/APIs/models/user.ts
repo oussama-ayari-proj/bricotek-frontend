@@ -11,7 +11,8 @@ export interface User {
   authorities?: Array<GrantedAuthority>;
   cotisation?: boolean;
   credentialsNonExpired?: boolean;
-  dateOfBirth?: string;
+  dateAdh?: string;
+  dateFinAdh?: string;
   email?: string;
   enabled?: boolean;
   name?: string;
@@ -21,6 +22,6 @@ export interface User {
   prenom?: string;
   prets?: Array<Pret>;
   role?: 'USER' | 'ADMIN';
-  userId?: number;
+  userId?: string;
   username?: string;
 }

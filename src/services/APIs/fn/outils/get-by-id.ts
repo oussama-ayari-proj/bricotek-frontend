@@ -10,7 +10,7 @@ import { RequestBuilder } from '../../request-builder';
 
 
 export interface GetById$Params {
-  outilsId: number;
+  outilsId: string;
 }
 
 export function getById(http: HttpClient, rootUrl: string, params: GetById$Params, context?: HttpContext): Observable<StrictHttpResponse<{

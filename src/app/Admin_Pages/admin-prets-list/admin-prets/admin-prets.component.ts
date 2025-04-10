@@ -43,4 +43,55 @@ export class AdminPretsComponent implements OnInit{
       this.list=res as [];
     })
   }
+
+  valider(pretId: any) {
+    const index=this.list.findIndex((pret)=> pret.pretId==pretId)
+    if(index!=-1){
+      this.pretService.valider(pretId).subscribe(
+          (res)=>{
+            console.log(res);
+          },
+        (err)=>{
+            console.log(err)
+          }
+        )
+      this.list[index].etat='CONFIRME'
+    }
+
+  }
+  attente(pretId: any) {
+    const index=this.list.findIndex((pret)=> pret.pretId==pretId)
+    if(index!=-1){
+      this.pretService.attente(pretId).subscribe(
+        (res)=>{
+          console.log(res);
+        },
+        (err)=>{
+          console.log(err)
+        }
+      )
+      this.list[index].etat='ATTENTE'
+    }
+  }
+  refuser(pretId: any) {
+    const index=this.list.findIndex((pret)=> pret.pretId==pretId)
+    if(index!=-1){
+      this.pretService.refuser(pretId).subscribe((res)=>{
+        console.log(res);
+      })
+      this.list[index].etat='REFUSE'
+    }
+  }
+
+  delete(pretId:any){
+    const index=this.list.findIndex((pret)=> pret.pretId==pretId)
+    if(index!=-1){
+      this.pretService.delete(pretId).subscribe((res)=>{
+        console.log(res);
+      })
+      this.list.splice(index,1);
+    }
+  }
+
+
 }

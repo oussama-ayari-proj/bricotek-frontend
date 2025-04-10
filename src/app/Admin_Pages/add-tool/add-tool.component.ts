@@ -54,8 +54,9 @@ constructor(
     this.router.navigateByUrl('/admin-home');
   }
   categories= [
-    {value: 'CAT1', viewValue: 'Cat1'},
-    {value: 'CAT2', viewValue: 'Cat2'},
+    {value: 'CAT1', viewValue: 'Petit electromenager'},
+    {value: 'CAT2', viewValue: 'Velos'},
+    {value: 'CAT3', viewValue: 'Accessoires'},
   ];
   private _formBuilder = inject(FormBuilder);
 
@@ -63,6 +64,8 @@ constructor(
     nom: ['', Validators.required],
     imgPath: [''],
     videoPath: [''],
+    codeRangement: [''],
+    marque: [''],
     etat: [false,Validators.required],
     categorieOutils: ['', Validators.required]
   });
@@ -84,15 +87,9 @@ constructor(
   }
 
   sendOutils() {
-    this.outilsService.addOutils({
-      imgPath: this.firstFormGroup.value.imgPath,
-      videoPath: this.firstFormGroup.value.videoPath,
-      etat: this.firstFormGroup.value.etat,
-      nom: this.firstFormGroup.value.nom,
-      categorieOutils: this.firstFormGroup.value.categorieOutils
-    }).subscribe((res)=>{
+    this.outilsService.addOutils(this.firstFormGroup.value).subscribe((res)=>{
       console.log(res);
-      let outilId=(res as number);
+      let outilId=res['outilId'];
       if(this.fileName)
         this.outilsService.addImageOutils(outilId,this.formData.get("photo")).subscribe((res)=>{
           console.log(res);

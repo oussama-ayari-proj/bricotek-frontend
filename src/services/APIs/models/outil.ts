@@ -5,12 +5,14 @@
 import { ImageData } from '../models/image-data';
 import { Pret } from '../models/pret';
 export interface Outil {
-  categorieOutils?: 'CAT1' | 'CAT2';
+  categorieOutils?: 'CAT1' | 'CAT2' | 'CAT3';
+  codeRangement?: string;
   etat?: boolean;
   imageData?: ImageData;
   imgPath?: string;
+  marque?: string;
   nom?: string;
-  outilId?: number;
+  outilId?: string;
   prets?: Array<Pret>;
   videoPath?: string;
 }

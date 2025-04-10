@@ -7,8 +7,8 @@ import { HttpClient } from '@angular/common/http';
 import { ApiConfiguration, ApiConfigurationParams } from './api-configuration';
 
 import { UsersService } from './services/users.service';
-import { OutilsService } from './services/outils.service';
 import { PretsService } from './services/prets.service';
+import { OutilsService } from './services/outils.service';
 import { AuthenticationService } from './services/authentication.service';
 
 /**
@@ -20,8 +20,8 @@ import { AuthenticationService } from './services/authentication.service';
   declarations: [],
   providers: [
     UsersService,
-    OutilsService,
     PretsService,
+    OutilsService,
     AuthenticationService,
     ApiConfiguration
   ],

@@ -11,7 +11,7 @@ import { RequestBuilder } from '../../request-builder';
 import { Outil } from '../../models/outil';
 
 export interface ModifyOutil$Params {
-  outilsId: number;
+  outilsId: string;
   outil: Outil;
 }
 

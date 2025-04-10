@@ -10,8 +10,8 @@
   width: 35%;
   height: 100%;
 }
-.positive , .negative{
-  width: 50px;
+.positive , .negative,.attente{
+  width: 85px;
   height: 25px;
   display: flex;
   justify-content: center;
@@ -24,4 +24,10 @@
   width: 80px;
   height: 25px;
   background-color: red;
+}
+
+.attente{
+  width: 80px;
+  height: 25px;
+  background-color: #adad00;
 }

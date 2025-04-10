@@ -30,14 +30,12 @@
         <mat-label>Numéro de telephone</mat-label>
         <input matInput placeholder="" value="" formControlName="numTel">
       </mat-form-field>
+      <mdb-form-control class="mb-4">
+        <input mdbInput formControlName="dateAdh" type="date" class="form-control" />
+        <label mdbLabel class="form-label" >Date d'adhésion</label>
+      </mdb-form-control>
 
-      <mat-form-field>
-        <mat-label>Date de naissance</mat-label>
-        <input matInput formControlName="dateOfBirth" [matDatepicker]="dp" />
-        <mat-hint>MM/DD/YYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
-        <mat-datepicker #dp></mat-datepicker>
-      </mat-form-field>
+
       <mat-form-field class="example-full-width">
         <mat-label>Mot de passe</mat-label>
         <input matInput placeholder="" value="" formControlName="password">

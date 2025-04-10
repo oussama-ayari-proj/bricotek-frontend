@@ -56,6 +56,7 @@ export class CatalogeOutilsComponent implements OnInit{
   filterForm=this._formBuilder.group({
     CAT1:[false],
     CAT2:[false],
+    CAT3:[false],
   });
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
@@ -80,19 +81,39 @@ export class CatalogeOutilsComponent implements OnInit{
     this.outilsService.getOutils().subscribe((tools)=>{
         this.list=(tools as []);
         this.res=this.list;
+        console.log(this.res)
         this.list.forEach((tool)=>{
           this.outilsService.getImageOutilById(tool.image).subscribe((img)=>{
             this.toolImages[tool.image] = URL.createObjectURL(img as Blob);
           });
+          let cat=''
+          let categories= [
+            {value: 'CAT1', viewValue: 'Petit electromenager'},
+            {value: 'CAT2', viewValue: 'Velos'},
+            {value: 'CAT3', viewValue: 'Accessoires'},
+          ];
+          categories.forEach((c)=>{
+            if(c.value==tool.categorieOutils)
+              cat=c.viewValue;
+          })
+          if(tool.videoPath!=null){
+            const embedUrl = this.convertToEmbedUrl(tool.videoPath);
+            tool.videoPath=this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
+          }
           this.tools.push({
             index:tool.outilId,
             nom:tool.nom,
-            categorieOutils:tool.categorieOutils,
-            etat: tool.etat ? 'Disponible' : 'Non Disponible'
+            categorieOutils:cat,
+            etat: tool.etat ? 'Disponible' : 'Non Disponible',
+            image: tool.image,
+            videoPath: tool.videoPath
           })
         })
       }
     );
+  }
+  convertToEmbedUrl(url: string): string {
+    return url.replace('watch?v=', 'embed/');
   }
   login() {
     this.router.navigate([''])
@@ -105,7 +126,7 @@ export class CatalogeOutilsComponent implements OnInit{
         return t['outilId']==filterValue;
       }
     )
-    this.res=tool;
+    this.tools=tool;
   }
 
   formatDate(date: Date): string {
@@ -139,6 +160,8 @@ export class CatalogeOutilsComponent implements OnInit{
           cond=cond || tool['categorieOutils']=='CAT1'
         if(this.filterForm.value.CAT2)
           cond=cond || tool['categorieOutils']=='CAT2'
+        if(this.filterForm.value.CAT3)
+          cond=cond || tool['categorieOutils']=='CAT3'
         return cond;
       });
     if(!this.filterForm.value.CAT1 && ! this.filterForm.value.CAT2)

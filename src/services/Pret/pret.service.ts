@@ -21,4 +21,28 @@ export class PretService {
       dateRetour:value['dateRetour']
     })
   }
+
+  valider(id:any){
+    return this.pretService.valider({
+      id
+    })
+  }
+
+  refuser(id:any){
+    return this.pretService.refuser({
+      id
+    })
+  }
+
+  delete(id:any){
+    return this.pretService.delete({
+      id
+    })
+  }
+
+  attente(pretId: any) {
+    return this.pretService.attente({
+      id:pretId
+    })
+  }
 }

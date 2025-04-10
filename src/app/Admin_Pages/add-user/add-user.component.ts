@@ -43,7 +43,8 @@ export class AddUserComponent implements OnInit{
     prenom: new FormControl(''),
     adresse: new FormControl(''),
     numTel: new FormControl(''),
-    dateOfBirth: new FormControl(''),
+    dateAdh: new FormControl(''),
+    dateFinAdh: new FormControl(''),
     email: new FormControl(''),
     password: new FormControl(''),
     role: new FormControl(''),
@@ -55,6 +56,13 @@ constructor(
   ) {
 }
   onSubmit() {
+    const currentYear = new Date().getFullYear();
+    const endOfYear = new Date(currentYear, 11, 31);
+
+    const formattedDate = endOfYear.toISOString().split('T')[0];
+
+    this.form.get('dateFinAdh')?.setValue(formattedDate);
+    console.log(this.form.value)
     this.userService.addUser(this.form.value).subscribe(
       {
         next:(res)=>{
@@ -76,11 +84,8 @@ constructor(
     this.router.navigateByUrl('/admin-home');
   }
 
-  private readonly _adapter = inject<DateAdapter<unknown, unknown>>(DateAdapter);
-  private readonly _intl = inject(MatDatepickerIntl);
-  private readonly _locale = signal(inject<unknown>(MAT_DATE_LOCALE));
+
   ngOnInit(): void {
-    this._locale.set('fr');
-    this._adapter.setLocale(this._locale());
+
   }
 }

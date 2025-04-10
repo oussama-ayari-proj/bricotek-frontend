@@ -10,8 +10,8 @@ import { RequestBuilder } from '../../request-builder';
 
 
 export interface Add$Params {
-  outilId: number;
-  userId: number;
+  outilId: string;
+  userId: string;
   dateRetour: string;
 }
 

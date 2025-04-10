@@ -22,11 +22,12 @@
         <td>{{o.nom}}</td>
         <td>{{o.etat}}</td>
         <td>
-          <img *ngIf="toolImages[o.image]!=null" [src]="toolImages[o.image]" class="outils-img">
+          <img *ngIf="toolImages[o.image]!=null" [src]="toolImages[o.image] || toolImages[o.imgPath]" class="outils-img">
           <p *ngIf="toolImages[o.image]==null">Pas d'image</p>
         </td>
         <td>
-          <iframe width="250" height="200" src="https://www.youtube.com/embed/wdbiIUhXLdc?si=Ium8aWYy47PTKJiw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <p *ngIf="!o.videoPath">Pas de vidéo</p>
+          <iframe *ngIf="o.videoPath" width="250" height="200" [src]="o.videoPath" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </td>
         <td>{{o.categorieOutils}}</td>
         <td>

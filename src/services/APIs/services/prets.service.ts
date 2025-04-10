@@ -13,13 +13,108 @@ import { StrictHttpResponse } from '../strict-http-response';
 
 import { add } from '../fn/prets/add';
 import { Add$Params } from '../fn/prets/add';
+import { attente } from '../fn/prets/attente';
+import { Attente$Params } from '../fn/prets/attente';
+import { delete$ } from '../fn/prets/delete';
+import { Delete$Params } from '../fn/prets/delete';
 import { getAll } from '../fn/prets/get-all';
 import { GetAll$Params } from '../fn/prets/get-all';
+import { refuser } from '../fn/prets/refuser';
+import { Refuser$Params } from '../fn/prets/refuser';
+import { valider } from '../fn/prets/valider';
+import { Valider$Params } from '../fn/prets/valider';
 
 @Injectable({ providedIn: 'root' })
 export class PretsService extends BaseService {
   constructor(config: ApiConfiguration, http: HttpClient) {
     super(config, http);
+  }
+
+  /** Path part for operation `valider()` */
+  static readonly ValiderPath = '/prets/valider';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `valider()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  valider$Response(params: Valider$Params, context?: HttpContext): Observable<StrictHttpResponse<{
+}>> {
+    return valider(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `valider$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  valider(params: Valider$Params, context?: HttpContext): Observable<{
+}> {
+    return this.valider$Response(params, context).pipe(
+      map((r: StrictHttpResponse<{
+}>): {
+} => r.body)
+    );
+  }
+
+  /** Path part for operation `refuser()` */
+  static readonly RefuserPath = '/prets/refuser';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `refuser()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  refuser$Response(params: Refuser$Params, context?: HttpContext): Observable<StrictHttpResponse<{
+}>> {
+    return refuser(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `refuser$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  refuser(params: Refuser$Params, context?: HttpContext): Observable<{
+}> {
+    return this.refuser$Response(params, context).pipe(
+      map((r: StrictHttpResponse<{
+}>): {
+} => r.body)
+    );
+  }
+
+  /** Path part for operation `attente()` */
+  static readonly AttentePath = '/prets/attente';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `attente()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  attente$Response(params: Attente$Params, context?: HttpContext): Observable<StrictHttpResponse<{
+}>> {
+    return attente(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `attente$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  attente(params: Attente$Params, context?: HttpContext): Observable<{
+}> {
+    return this.attente$Response(params, context).pipe(
+      map((r: StrictHttpResponse<{
+}>): {
+} => r.body)
+    );
   }
 
   /** Path part for operation `add()` */
@@ -74,6 +169,35 @@ export class PretsService extends BaseService {
   getAll(params?: GetAll$Params, context?: HttpContext): Observable<{
 }> {
     return this.getAll$Response(params, context).pipe(
+      map((r: StrictHttpResponse<{
+}>): {
+} => r.body)
+    );
+  }
+
+  /** Path part for operation `delete()` */
+  static readonly DeletePath = '/prets/delete';
+
+  /**
+   * This method provides access to the full `HttpResponse`, allowing access to response headers.
+   * To access only the response body, use `delete()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  delete$Response(params: Delete$Params, context?: HttpContext): Observable<StrictHttpResponse<{
+}>> {
+    return delete$(this.http, this.rootUrl, params, context);
+  }
+
+  /**
+   * This method provides access only to the response body.
+   * To access the full response (for headers, for example), `delete$Response()` instead.
+   *
+   * This method doesn't expect any request body.
+   */
+  delete(params: Delete$Params, context?: HttpContext): Observable<{
+}> {
+    return this.delete$Response(params, context).pipe(
       map((r: StrictHttpResponse<{
 }>): {
 } => r.body)

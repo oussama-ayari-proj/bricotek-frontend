@@ -25,32 +25,34 @@ import { AppRoutingModule } from './app-routing.module';
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {provideNativeDateAdapter} from "@angular/material/core";
+import {NavbarComponent} from "./navbar/navbar.component";
 
 @NgModule({
   declarations: [
     AppComponent
   ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MdbAccordionModule,
-    MdbCarouselModule,
-    MdbCheckboxModule,
-    MdbCollapseModule,
-    MdbDropdownModule,
-    MdbFormsModule,
-    MdbModalModule,
-    MdbPopoverModule,
-    MdbRadioModule,
-    MdbRangeModule,
-    MdbRippleModule,
-    MdbScrollspyModule,
-    MdbTabsModule,
-    MdbTooltipModule,
-    MdbValidationModule,
-    AppRoutingModule,
-    HttpClientModule,
-  ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        MdbAccordionModule,
+        MdbCarouselModule,
+        MdbCheckboxModule,
+        MdbCollapseModule,
+        MdbDropdownModule,
+        MdbFormsModule,
+        MdbModalModule,
+        MdbPopoverModule,
+        MdbRadioModule,
+        MdbRangeModule,
+        MdbRippleModule,
+        MdbScrollspyModule,
+        MdbTabsModule,
+        MdbTooltipModule,
+        MdbValidationModule,
+        AppRoutingModule,
+        HttpClientModule,
+        NavbarComponent,
+    ],
   providers: [
     provideAnimationsAsync(),
     provideNativeDateAdapter(),

@@ -9,15 +9,15 @@ import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
 
-export interface DeleteOutil$Params {
-  outilId: string;
+export interface Delete$Params {
+  id: number;
 }
 
-export function deleteOutil(http: HttpClient, rootUrl: string, params: DeleteOutil$Params, context?: HttpContext): Observable<StrictHttpResponse<{
+export function delete$(http: HttpClient, rootUrl: string, params: Delete$Params, context?: HttpContext): Observable<StrictHttpResponse<{
 }>> {
-  const rb = new RequestBuilder(rootUrl, deleteOutil.PATH, 'delete');
+  const rb = new RequestBuilder(rootUrl, delete$.PATH, 'delete');
   if (params) {
-    rb.query('outilId', params.outilId, {});
+    rb.query('id', params.id, {});
   }
 
   return http.request(
@@ -31,4 +31,4 @@ export function deleteOutil(http: HttpClient, rootUrl: string, params: DeleteOut
   );
 }
 
-deleteOutil.PATH = '/outils';
+delete$.PATH = '/prets/delete';

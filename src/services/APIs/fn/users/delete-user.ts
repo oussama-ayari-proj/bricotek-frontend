@@ -10,7 +10,7 @@ import { RequestBuilder } from '../../request-builder';
 
 
 export interface DeleteUser$Params {
-  id: number;
+  id: string;
 }
 
 export function deleteUser(http: HttpClient, rootUrl: string, params: DeleteUser$Params, context?: HttpContext): Observable<StrictHttpResponse<{

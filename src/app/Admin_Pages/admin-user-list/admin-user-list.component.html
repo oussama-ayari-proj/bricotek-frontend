@@ -14,7 +14,8 @@
         <th scope="col">Email</th>
         <th scope="col">Téléphone</th>
         <th scope="col">Adresse</th>
-        <th scope="col">Date de naissance</th>
+        <th scope="col">Date de Adhésion</th>
+        <th scope="col">Date de Fin Adhésion</th>
         <th scope="col">Manipulations</th>
       </tr>
       </thead>
@@ -30,7 +31,8 @@
         <td>{{ u.email }}</td>
         <td>{{ u.numTel }}</td>
         <td>{{ u.addresse }}</td>
-        <td>{{ u.dateOfBirth }}</td>
+        <td>{{ u.dateAdh }}</td>
+        <td>{{ u.dateFinAdh }}</td>
         <td>
           <div class="flex-content">
             <img src="assets/modify.png" (click)="modify(u.userId)" alt="" srcset="" style="height: 40px;width: 40px;cursor: pointer">

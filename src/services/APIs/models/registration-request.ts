@@ -5,7 +5,8 @@
 export interface RegistrationRequest {
   adresse?: string;
   cotisation?: boolean;
-  dateOfBirth?: string;
+  dateAdh?: string;
+  dateFinAdh?: string;
   email: string;
   nom: string;
   numTel?: string;

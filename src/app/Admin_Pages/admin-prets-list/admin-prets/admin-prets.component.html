@@ -10,7 +10,9 @@
         <th scope="col">#</th>
         <th scope="col">Outil</th>
         <th scope="col">Utilisateur</th>
+        <th scope="col">État</th>
         <th scope="col">Date de retour</th>
+        <th scope="col">Date de la demande</th>
         <th scope="col">Manipulations</th>
       </tr>
       </thead>
@@ -19,8 +21,21 @@
         <th scope="row">{{p.pretId}}</th>
         <td>{{ p.outil }}</td>
         <th>{{ p.user }}</th>
+        <th>
+          <div class="attente" *ngIf="p.etat=='ATTENTE'">{{ p.etat }}</div>
+          <div class="positive" *ngIf="p.etat=='CONFIRME'">{{ p.etat }}</div>
+          <div class="negative" *ngIf="p.etat=='REFUSE'">{{ p.etat }}</div>
+        </th>
         <td>{{ p.dateRetour }}</td>
-        <td><img src="assets/icon.png" alt="" srcset="" width="50px"></td>
+        <td>{{ p.dateDemande }}</td>
+        <td>
+          <div class="flex-content">
+            <img src="assets/valider_icon.png" (click)="valider(p.pretId)" alt="" srcset="" style="height: 40px;width: 40px;cursor: pointer">
+            <img src="assets/attente_icon.png" (click)="attente(p.pretId)" alt="" srcset="" style="height: 40px;width: 40px;cursor: pointer">
+            <img src="assets/refuser.jpg" (click)="refuser(p.pretId)" alt="" srcset="" style="width: 40px;height: 40px;cursor: pointer">
+            <img src="assets/delete.jfif" (click)="delete(p.pretId)" alt="" srcset="" style="width: 40px;height: 40px;cursor: pointer">
+          </div>
+        </td>
       </tr>
       </tbody>
     </table>

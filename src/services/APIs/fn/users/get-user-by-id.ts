@@ -10,7 +10,7 @@ import { RequestBuilder } from '../../request-builder';
 
 
 export interface GetUserById$Params {
-  id: number;
+  id: string;
 }
 
 export function getUserById(http: HttpClient, rootUrl: string, params: GetUserById$Params, context?: HttpContext): Observable<StrictHttpResponse<{

@@ -30,15 +30,6 @@ export class AdminUserListComponent implements OnInit{
         next:(res)=>{
           this.list=res as [];
           console.log(this.list)
-          this.list=this.list.map(item => {
-            item.dateOfBirth=item.dateOfBirth.slice(0, 10)
-            const dateParts = item.dateOfBirth.split("-");
-            const formattedDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
-            return {
-            ...item,
-            dateOfBirth: formattedDate
-            }
-          });
         },
         error:(err)=>{
           console.log(err)

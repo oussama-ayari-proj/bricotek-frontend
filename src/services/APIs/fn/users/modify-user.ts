@@ -11,7 +11,7 @@ import { RequestBuilder } from '../../request-builder';
 import { RegistrationRequest } from '../../models/registration-request';
 
 export interface ModifyUser$Params {
-  id: number;
+  id: string;
   request: RegistrationRequest;
 }
 

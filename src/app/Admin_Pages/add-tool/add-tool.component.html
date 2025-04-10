@@ -9,6 +9,16 @@
         </mat-form-field>
         <br>
         <mat-form-field>
+          <mat-label>Marque</mat-label>
+          <input matInput placeholder="Marque de l'outil" formControlName="marque" required>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-label>Code de rangement</mat-label>
+          <input matInput placeholder="Nom de l'outil" formControlName="codeRangement" required>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
           <mat-label>Catégorie / Filtre</mat-label>
           <mat-select [formControl]="firstFormGroup.controls.categorieOutils">
             @for (categorie of categories; track categorie) {

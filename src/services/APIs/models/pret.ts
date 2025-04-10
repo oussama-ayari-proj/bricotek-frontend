@@ -5,7 +5,9 @@
 import { Outil } from '../models/outil';
 import { User } from '../models/user';
 export interface Pret {
+  dateDemande?: string;
   dateRetour?: string;
+  etat?: 'ATTENTE' | 'CONFIRME' | 'REFUSE';
   outil?: Outil;
   pretId?: number;
   user?: User;

@@ -10,7 +10,7 @@ import { RequestBuilder } from '../../request-builder';
 
 
 export interface UploadImage$Params {
-  outil_id: number;
+  outil_id: string;
       body?: {
 'image': Blob;
 }

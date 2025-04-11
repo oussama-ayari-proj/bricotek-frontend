@@ -62,8 +62,8 @@ constructor(
 
   firstFormGroup = this._formBuilder.group({
     nom: ['', Validators.required],
-    imgPath: [''],
-    videoPath: [''],
+    imgPath: [null],
+    videoPath: [null],
     codeRangement: [''],
     marque: [''],
     etat: [false,Validators.required],

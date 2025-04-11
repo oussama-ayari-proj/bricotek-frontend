@@ -104,6 +104,7 @@ export class CatalogeOutilsComponent implements OnInit{
             index:tool.outilId,
             nom:tool.nom,
             categorieOutils:cat,
+            marque: tool.marque,
             etat: tool.etat ? 'Disponible' : 'Non Disponible',
             image: tool.image,
             videoPath: tool.videoPath
@@ -143,11 +144,14 @@ export class CatalogeOutilsComponent implements OnInit{
       console.log(decodedToken);
       const currentDate = new Date(); // Date actuelle
       currentDate.setDate(currentDate.getDate() + 21);
+      console.log(currentDate)
       console.log(this.formatDate(currentDate))
+      console.log(outilId)
       this.pretService.addPret({
         user_id:decodedToken['userId'],
         outil_id:outilId,
-        dateRetour:this.formatDate(currentDate)
+        dateRetour:this.formatDate(currentDate),
+
       }).subscribe((res)=>console.log(res))
     }
   }

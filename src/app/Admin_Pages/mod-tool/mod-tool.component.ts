@@ -84,7 +84,7 @@ constructor(
   sendOutils() {
     this.outilsService.modifyOutilById(this.id,{
       imgPath: this.firstFormGroup.value.imgPath,
-      videoPath: this.firstFormGroup.value.videoPath,
+      videoPath: this.firstFormGroup.value.videoPath=='' ? null : this.firstFormGroup.value.videoPath,
       etat: this.firstFormGroup.value.etat,
       nom: this.firstFormGroup.value.nom,
       categorieOutils: this.firstFormGroup.value.categorieOutils

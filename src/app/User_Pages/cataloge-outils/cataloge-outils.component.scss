@@ -2,7 +2,7 @@
   width: 100vw;
   height: 100vh;
   display: grid;
-  grid-template-columns: 15% 70% 15%;
+  grid-template-columns: 12% 76% 12%;
   row-gap: 10%;
 }
 .search-bar-layout{
@@ -38,33 +38,33 @@
 }
 .catalogue-content-layout{
   width: 100%;
-  height: 50%;
+  height: 60%;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow-y: scroll;
 }
 .catalogue-content-container{
-  width: 50%;
-  height: 100%;
+  width: 80%;
+  height: 80%;
   display: flex;
   flex-direction: column;
   row-gap: 20px;
 }
 .outils-container{
-  width: 100%;
-  height: 350px;
+  width: 50%;
+  height: 100%;
   display: flex;
   border: 1px black solid;
   border-radius: 5px;
   padding: 10px;
 }
 .outils-img{
-  width: 35%;
+  width: 60%;
   height: 100%;
 }
 .outils-content-container{
-  width: 65%;
+  width: 30%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -73,7 +73,7 @@
 }
 .outils-content-text{
   width: 100%;
-  height: 40%;
+  height: 100%;
   padding: 5px;
   display: flex;
   justify-content: space-between;
@@ -96,8 +96,8 @@
 }
 
 .outils-content-video{
-  width: 100%;
-  height: 60%;
+  width: 40%;
+  height: 100%;
 }
 
 .outils-categorie,.outils-etat-reserve,.outils-etat-dispo{
@@ -113,6 +113,9 @@
 .outils-etat-reserve{
   background-color: red;
 }
+.outils-nom{
+  font-size: 20px;
+}
 .outils-etat-dispo{
   background-color: green;
 }
@@ -124,4 +127,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.outil-layout{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }

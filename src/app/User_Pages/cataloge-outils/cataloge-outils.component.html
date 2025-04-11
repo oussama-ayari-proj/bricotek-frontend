@@ -34,32 +34,38 @@
     </div>
     <div class="catalogue-content-layout">
       <div class="catalogue-content-container">
-        <div *ngFor="let outil of tools" class="outils-container">
-          <img [src]="toolImages[outil.image]" class="outils-img">
-          <div class="outils-content-container">
-            <div class="outils-content-text">
-              <div class="border-card">
-                <div class="outils-nom">
-                  {{outil.nom}}
-                </div>
-                <div class="outils-categorie">
-                  {{ outil.categorieOutils }}
-                </div>
-                <div *ngIf="!outil.etat" class="outils-etat-reserve">
-                  Réservé
-                </div>
-                <div *ngIf="outil.etat" class="outils-etat-dispo">
-                  Disponible
+        <div *ngFor="let outil of tools" class="outil-layout">
+          <div class="outils-container">
+            <img [src]="toolImages[outil.image]" class="outils-img">
+            <div class="outils-content-container">
+              <div class="outils-content-text">
+                <div class="border-card">
+                  <div *ngIf="outil.nom" class="outils-nom">
+                    {{outil.nom}}
+                  </div>
+                  <div *ngIf="outil.marque" class="outils-nom">
+                    {{outil.marque}}
+                  </div>
+                  <div class="outils-categorie">
+                    {{ outil.categorieOutils }}
+                  </div>
+                  <div *ngIf="!outil.etat" class="outils-etat-reserve">
+                    Réservé
+                  </div>
+                  <div *ngIf="outil.etat" class="outils-etat-dispo">
+                    Disponible
+                  </div>
+                  <button type="button" [disabled]="!isconnected" (click)="reserver(outil.index)" class="btn btn-primary reservation-button">Réserver</button>
                 </div>
               </div>
-              <div class="reservation-button-container">
-                <button type="button" [disabled]="!isconnected" (click)="reserver(outil.outilId)" class="btn btn-primary reservation-button">Réserver</button>
-              </div>
             </div>
-            <div class="outils-content-video">
-              <p *ngIf="!outil.videoPath">Pas de vidéo</p>
-              <iframe *ngIf="outil.videoPath" width="250" height="200" [src]="outil.videoPath" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            </div>
+          </div>
+
+          <div *ngIf="outil.videoPath" class="outils-content-video">
+            <iframe width="100%" height="100%" [src]="outil.videoPath" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
+          <div *ngIf="!outil.videoPath" class="outils-content-video">
+            <p>Pas de vidéo</p>
           </div>
         </div>
       </div>

@@ -10,6 +10,7 @@
         <th scope="col">Numéro adhérent</th>
         <th scope="col">Nom</th>
         <th scope="col">Prénom</th>
+        <th scope="col">Rôle</th>
         <th scope="col">Cotisation</th>
         <th scope="col">Email</th>
         <th scope="col">Téléphone</th>
@@ -19,11 +20,12 @@
         <th scope="col">Manipulations</th>
       </tr>
       </thead>
-      <tbody>
+      <tbody style="font-size: 12px">
       <tr *ngFor="let u of list">
         <th scope="row">{{ u.userId }}</th>
         <td>{{ u.nom }}</td>
         <td>{{ u.prenom }}</td>
+        <td>{{ u.role }}</td>
         <td>
           <div class="positive" *ngIf="u.cotisation">Payée</div>
           <div class="negative" *ngIf="!u.cotisation">Non Payée</div>
